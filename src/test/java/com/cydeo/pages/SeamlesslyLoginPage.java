@@ -18,7 +18,7 @@ public class SeamlesslyLoginPage extends BasePage {
     public WebElement passwordInput;
 
     @FindBy(id = "submit-form")
-    public WebElement submitformInput;
+    public WebElement loginButton;
 
     @FindBy(css = "img[src='/core/img/actions/toggle.svg']")
     public WebElement elementImg;
@@ -37,7 +37,7 @@ public class SeamlesslyLoginPage extends BasePage {
         if (submitType.equals("submitButton")){
             userInput.sendKeys(ConfigurationReader.getProperty("username"));
             passwordInput.sendKeys(ConfigurationReader.getProperty("password"));
-            submitformInput.click();
+            loginButton.click();
         }
 
         if (submitType.equals("enterKey")){
