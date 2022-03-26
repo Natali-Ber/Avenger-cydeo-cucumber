@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.security.Key;
+
 // http://qa.seamlessly.net/index.php/login
 public class SeamlesslyLoginPage  {
 
@@ -36,6 +38,7 @@ public class SeamlesslyLoginPage  {
     @FindBy(css = ".info")
     public WebElement infoP;
 
+    public static String message;
 
     public void login(String submitType) {
         if (submitType.equals("submitButton")){
@@ -50,4 +53,29 @@ public class SeamlesslyLoginPage  {
 
         }
     }
-}
+
+    public void login(String username,String password,String submitType){
+        if (submitType.equals("submitButton")){
+            userInput.sendKeys(username);
+            passwordInput.sendKeys(password);
+            loginButton.click();
+        }
+        if (submitType.equals("enterKey")){
+            userInput.sendKeys(username);
+            passwordInput.sendKeys(password+ Keys.ENTER);
+
+        }
+
+        if (userInput.getText().isEmpty() && passwordInput.getText().isEmpty()){
+            String  message1=userInput.getAttribute("validationMessage");
+            String  message2=userInput.getAttribute("validationMessage");
+            if (message1.isEmpty()){
+                message=message2;
+            }else{
+                message=message1;
+            }
+
+        }
+
+    }
+    }

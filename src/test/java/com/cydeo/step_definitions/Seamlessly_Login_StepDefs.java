@@ -37,7 +37,16 @@ HomePage homePage=new HomePage();
 
         Assert.assertEquals(expectedUser, actualUser);
 
+    }
 
+    @Given("the user is logged in {string} and {string} with {string}")
+    public void the_user_is_logged_in_and_with(String username, String password, String submitType) {
+     loginPage.login(username,password,submitType);
+    }
+
+    @Then("the user should see the message {string}")
+    public void the_user_should_see_the_message(String expectedMessage) {
 
     }
+
 }

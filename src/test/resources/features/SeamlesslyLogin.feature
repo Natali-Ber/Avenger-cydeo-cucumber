@@ -1,8 +1,7 @@
-
 Feature: Login With Different Scenarios
 
 
-  @PositiveLogin @smoke @wip
+  @PositiveLogin @smoke
   Scenario Outline: : Login with valid credentials
     Given the user on the login page
     Given the user is logged in with "<submitType>"
@@ -16,22 +15,26 @@ Feature: Login With Different Scenarios
   # we can check tags for
   # mac command+shift+R
   # windows ctrl+shift+R
-  @NegativeLogin
+  @NegativeLogin @wip
   Scenario Outline: Login with invalid credentials
     Given the user on the login page
     And the user is logged in "<username>" and "<password>" with "<submitType>"
     Then the user should see the message "Wrong username or password."
     And the user should see the url "http://qa.seamlessly.net/index.php/login?user=<username>"
-
+    @withSubmitButton
     Examples:
       | username   | password    | submitType   |
       | 1234       | Employee123 | submitButton |
       | 1234       | 1234        | submitButton |
       | Employee61 | 1234        | submitButton |
-      | 1234       | Employee123 | enterKey     |
-      | 1234       | 1234        | enterKey     |
-      | Employee61 | 1234        | enterKey     |
 
+
+    @withEnterKey
+    Examples:
+      | username   | password    | submitType |
+      | 1234       | Employee123 | enterKey   |
+      | 1234       | 1234        | enterKey   |
+      | Employee61 | 1234        | enterKey   |
 
   @NegativeLogin
   Scenario Outline: Login with invalid with empty credentials
