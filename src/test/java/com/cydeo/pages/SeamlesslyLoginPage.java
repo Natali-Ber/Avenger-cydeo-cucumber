@@ -9,7 +9,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 // http://qa.seamlessly.net/index.php/login
-public class SeamlesslyLoginPage extends BasePage {
+public class SeamlesslyLoginPage  {
+
+    public SeamlesslyLoginPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
+    }
 
     @FindBy(id = "user")
     public WebElement userInput;
