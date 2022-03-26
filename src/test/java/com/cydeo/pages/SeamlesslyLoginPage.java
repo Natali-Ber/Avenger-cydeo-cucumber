@@ -1,6 +1,8 @@
 package com.cydeo.pages;
 
+import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,7 +33,17 @@ public class SeamlesslyLoginPage extends BasePage {
     public WebElement infoP;
 
 
+    public void login(String submitType) {
+        if (submitType.equals("submitButton")){
+            userInput.sendKeys(ConfigurationReader.getProperty("username"));
+            passwordInput.sendKeys(ConfigurationReader.getProperty("password"));
+            submitformInput.click();
+        }
 
+        if (submitType.equals("enterKey")){
+            userInput.sendKeys(ConfigurationReader.getProperty("username"));
+            passwordInput.sendKeys(ConfigurationReader.getProperty("password")+ Keys.ENTER);
 
-
+        }
+    }
 }
