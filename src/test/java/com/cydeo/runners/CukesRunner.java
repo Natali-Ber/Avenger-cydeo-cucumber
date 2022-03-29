@@ -15,7 +15,9 @@ import org.junit.runner.RunWith;
         //if true we can get the snippits which are unimplemented
         //if false we can run the methods
         dryRun = false,
-        tags ="@wip"
+        tags ="@smoke"
+
+
 
 
 )
