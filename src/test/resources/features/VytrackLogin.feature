@@ -3,7 +3,6 @@ Feature: Vytrack Login feature
   As a user I should be able to login
 
 
-
   Scenario: As a user  should be able to ligin with valid credential
     Given User is on the login page
     When User enters the valid username
